@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load humanize %}
+{% block content %}
+    <strong>Name:</strong><p>{{ athlete.name }}</p>
+    <strong>Year:</strong><p>{{ athlete.year}}</p>
+    <strong>Events:</strong>{% for event in athlete.events.all %}
+{{ event.name }} | 
+{% endfor %}
+    <p><strong>Hometown:</strong> {{ athlete.hometown}} | {{ athlete.highschool }}</p>
+    <p><strong>Bio:</strong> {{ athlete.description }}</p>
+{% endblock content %}

@@ -1,14 +1,18 @@
+
+{% load static from staticfiles %}
 <!DOCTYPE html>
-    
-<HTML>
+
+<html lang="en">
     <head>
-        <title>UNC Track and Field</title>
-        <link href="bootstrap.min.css" rel="stylesheet">
-        <link href="../static/styles.css" rel="stylesheet" type="text/css">
+        <title>{% block title %}UNC Track and Field{% endblock %}</title>
+        <link href="{% static 'css/bootstrap.min.css' %}">
     </head>
+
     <body>
-        <h1>UNC Track and Field</h1>
-        <h2>The 2015 Men's Team Roster</h2>
-        {{ message }}
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
     </body>
-</HTML>
+</html>

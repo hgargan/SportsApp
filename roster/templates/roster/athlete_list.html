@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>All Athletes</h2>
+    <ul>
+        {% for athlete in athletes %}
+            <li><a href="{{ athlete.id }}">{{ athlete.name }}</a> {{ athlete.year }} | {{ athlete.hometown }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
