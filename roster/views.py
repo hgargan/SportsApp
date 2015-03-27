@@ -16,6 +16,7 @@ def athlete(request, pk):
     
 def event(request, pk):
     event = get_object_or_404(Event, id=pk)
+    eventAthletes = get_object_or_404(Athlete.events,id=pk)
     return render(request, 'roster/event.html', {'event': event})
 
 def athleteList(request):

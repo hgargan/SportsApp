@@ -1,5 +1,14 @@
+{% extends 'base.html' %}
+
 {% block content %}
-    <h2> {{ course.callnumber }} | {{ course.name }}</h2>
-    <h4> {{ course.instructor }}</h4>
-    <p> {{ course.description }}</p>
-{% endblock content %}
+    <h2>{{ event.name }} Athletes</h2>
+    <ul>
+        {% for athlete in athletes %}
+            <li>test</li>
+            <li><a href="{{ athlete.id }}">{{ athlete.name }}</a> {{ athlete.year }} | {{ athlete.hometown }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+<!-- question: why is the function not working at all on this page? I've narrowed it down to that. -->
+
