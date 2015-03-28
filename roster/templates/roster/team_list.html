@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="{% url 'roster_home'%}"><p class="back-button">Back to Home</p></a>
     <h2>All Teams</h2>
     <ul>
         {% for team in teams %}

@@ -3,7 +3,7 @@ from django.db import models
         
 class Event(models.Model):
     name = models.CharField(unique=True, max_length=50)
-    athletes = models.ManyToManyField('Athlete', related_name='events')
+    athletes = models.ManyToManyField('Athlete', related_name='events', null=True)
     
     class Meta(object):
         verbose_name_plural = "Events"
@@ -14,21 +14,22 @@ class Event(models.Model):
     
 
 class Athlete(models.Model):
-    name = models.CharField(unique=False, max_length=50)
+    lastname = models.CharField(unique=False, max_length=20, default='')
+    firstname = models.CharField(unique=False, max_length=20, default='')
     #event = models.CharField(unique=False, max_length=50)
     year = models.CharField(unique=False, max_length=50)
     hometown = models.CharField(unique=False, max_length=50)
     highschool = models.CharField(unique=False, max_length=75)
-    description = models.TextField(max_length=1000, default='')
+    description = models.TextField(default='')
     team = models.ForeignKey('Team', null=True)
     
 
     class Meta(object):
         verbose_name_plural = "Athletes"
-        ordering = ('name', 'year', 'hometown', 'highschool')
+        ordering = ('lastname', 'firstname', 'year', 'hometown', 'highschool')
         
     def __unicode__(self):
-        return u'%s' % self.name
+        return u'%s, %s' % (self.lastname, self.firstname)
     
 class Team(models.Model):
     sport = models.CharField(unique=True, max_length=50)

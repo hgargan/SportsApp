@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="{% url 'roster_team_list' %}"><p class="back-button">Back</p></a>
     <h2>All Events</h2>
     <ul>
-        {% for eventAthlete in events %}
+        {% for event in events %}
             <li><a href="{{ event.id }}">{{ event.name }}</a></li>
         {% endfor %}
     </ul>

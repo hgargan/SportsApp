@@ -1,10 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="{% url 'roster_team_list' %}"><p class="back-button">Back</p></a>
     <h2>All Athletes</h2>
-    <ul>
+    <table>
+        <tr>
+            <th><strong>Name</strong></th>
+            <th><strong>Class</strong></th>
+            <th><strong>Hometown</strong></th>
+        </tr>
         {% for athlete in athletes %}
-            <li><a href="{{ athlete.id }}">{{ athlete.name }}</a> {{ athlete.year }} | {{ athlete.hometown }}</li>
+            <tr>
+                <td><a href="{{ athlete.id }}">{{ athlete.lastname }}, {{athlete.firstname}}</a></td>
+                <td>{{ athlete.year }}</td>
+                <td>{{ athlete.hometown }}</td>
         {% endfor %}
-    </ul>
+    </table>
 {% endblock %}

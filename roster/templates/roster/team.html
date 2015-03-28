@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-        <h1>{{ team.name }}</h1>
-        <a href="{% url 'roster_athlete_list'  %}">Athletes</a>
-        <a href="{% url 'roster_event_list' %}">Events</a>
+        <a href="{% url 'roster_team_list'%}"><p class="back-button">Back to Teams</p></a>
+        <h1>{{ team.sport }}</h1>
+        <li><a href="{% url 'roster_athlete_list'  %}">Athletes</a></li>
+        <li><a href="{% url 'roster_event_list' %}">Events</a></li>
 {% endblock %}

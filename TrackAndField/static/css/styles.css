@@ -2,10 +2,24 @@ body {
     padding: 5%;
     background-color: #56A0D3;
     font-family: Helvetica, sans-serif;
+    font-weight: 300;
 }
 
 h1 {
-    font-family: sans-serif;
+    font-family: Helvetica, sans-serif;
+}
+
+p {
+    font-family: Helvetica, sans-serif;
+}
+
+.bio {
+    font-family: Baskerville, serif;
+}
+
+.back-button {
+    font-size: .8em;
+    
 }
 
 a {
@@ -20,4 +34,13 @@ a:hover {
 li {
     list-style-type: none;
     line-height: 2em;
+}
+
+td {
+    padding: 8px 20px 8px 0px;
+    border-bottom: 1px solid #222;
+    
+}
+
+table {
 }

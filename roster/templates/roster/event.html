@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="{% url 'roster_event_list' %}"><p class="back-button">Back</p></a>
     <h2>{{ event.name }} Athletes</h2>
-    <ul>
-        {% for athlete in athletes %}
-            <li>test</li>
-            <li><a href="{{ athlete.id }}">{{ athlete.name }}</a> {{ athlete.year }} | {{ athlete.hometown }}</li>
+   <table>
+        <tr>
+            <th><strong>Name</strong></th>
+            <th><strong>Class</strong></th>
+            <th><strong>Hometown</strong></th>
+        </tr>
+        {% for event_athlete in event_athletes %}
+            <tr>
+                <td><a href="{% url 'roster_athlete' event_athlete.id %}">{{ event_athlete.lastname }}, {{event_athlete.firstname}}</a></td>
+                <td>{{ event_athlete.year }}</td>
+                <td>{{ event_athlete.hometown }}</td>
         {% endfor %}
-    </ul>
+    </table>
 {% endblock %}
+
 
 <!-- question: why is the function not working at all on this page? I've narrowed it down to that. -->
 
