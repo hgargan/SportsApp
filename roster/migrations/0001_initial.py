@@ -39,20 +39,4 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.CreateModel(
-            name='Team',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('sport', models.CharField(unique=True, max_length=50)),
-                ('school', models.CharField(max_length=50)),
-                ('season', models.CharField(unique=True, max_length=50)),
-                ('coach', models.CharField(unique=True, max_length=50)),
-                ('athlete', models.OneToOneField(to='roster.Athlete')),
-            ],
-            options={
-                'ordering': ('school', 'sport', 'season'),
-                'verbose_name_plural': 'Teams',
-            },
-            bases=(models.Model,),
-        ),
     ]

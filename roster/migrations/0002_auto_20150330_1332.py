@@ -11,6 +11,22 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.CreateModel(
+            name='Team',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('sport', models.CharField(unique=True, max_length=50)),
+                ('school', models.CharField(max_length=50)),
+                ('season', models.CharField(default=b'', max_length=50)),
+                ('coach', models.CharField(default=b'', unique=True, max_length=50)),
+                ('athletes', models.ManyToManyField(default=b'', related_name=b'teams', null=True, to='roster.Athlete')),
+            ],
+            options={
+                'ordering': ('school', 'sport', 'season'),
+                'verbose_name_plural': 'Teams',
+            },
+            bases=(models.Model,),
+        ),
         migrations.AlterModelOptions(
             name='athlete',
             options={'ordering': ('lastname', 'firstname', 'year', 'hometown', 'highschool'), 'verbose_name_plural': 'Athletes'},
@@ -18,10 +34,6 @@ class Migration(migrations.Migration):
         migrations.RemoveField(
             model_name='athlete',
             name='name',
-        ),
-        migrations.RemoveField(
-            model_name='team',
-            name='athlete',
         ),
         migrations.AddField(
             model_name='athlete',
@@ -35,12 +47,6 @@ class Migration(migrations.Migration):
             field=models.CharField(default=b'', max_length=20),
             preserve_default=True,
         ),
-        migrations.AddField(
-            model_name='team',
-            name='athletes',
-            field=models.ForeignKey(related_name=b'teams', default=b'', to='roster.Team', null=True),
-            preserve_default=True,
-        ),
         migrations.AlterField(
             model_name='athlete',
             name='description',
@@ -50,15 +56,5 @@ class Migration(migrations.Migration):
             model_name='event',
             name='athletes',
             field=models.ManyToManyField(related_name=b'events', null=True, to=b'roster.Athlete'),
-        ),
-        migrations.AlterField(
-            model_name='team',
-            name='coach',
-            field=models.CharField(default=b'', unique=True, max_length=50),
-        ),
-        migrations.AlterField(
-            model_name='team',
-            name='season',
-            field=models.CharField(max_length=50),
         ),
     ]

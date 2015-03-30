@@ -33,9 +33,9 @@ class Athlete(models.Model):
 class Team(models.Model):
     sport = models.CharField(unique=True, max_length=50)
     school = models.CharField(unique=False, max_length=50)
-    season = models.CharField(unique=False, max_length=50)
+    season = models.CharField(unique=False, max_length=50, default='')
     coach = models.CharField(unique=True, max_length=50, default='')
-    athletes = models.ForeignKey('Team', related_name='teams', default='', null=True)
+    athletes = models.ManyToManyField('Athlete', related_name='teams', default='', null=True)
     
     class Meta(object):
         verbose_name_plural = "Teams"
