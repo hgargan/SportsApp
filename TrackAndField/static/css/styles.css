@@ -3,6 +3,17 @@ body {
     background-color: #56A0D3;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
+    max-width: 960px;
+}
+
+header {
+    font-size: 5vw;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 1%;
+
 }
 
 h1 {
@@ -28,7 +39,8 @@ a {
 }
 
 a:hover {
-    color: #000033;
+    color: #000000;
+    text-decoration: none;
 }
 
 li {
@@ -44,3 +56,25 @@ td {
 
 table {
 }
+
+.athlete-page {
+    max-width: 800px;
+}
+
+.athlete-info {
+    background-color: #fff;
+    color: #000000;
+    padding: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+.athlete-info a {
+    color: #56A0D3;
+
+}
+
+.athlete-info a:hover {
+    color: #000000;
+}
+

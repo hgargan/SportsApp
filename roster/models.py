@@ -21,7 +21,6 @@ class Athlete(models.Model):
     hometown = models.CharField(unique=False, max_length=50)
     highschool = models.CharField(unique=False, max_length=75)
     description = models.TextField(default='')
-    team = models.ForeignKey('Team', null=True)
     
 
     class Meta(object):
@@ -36,6 +35,7 @@ class Team(models.Model):
     school = models.CharField(unique=False, max_length=50)
     season = models.CharField(unique=False, max_length=50)
     coach = models.CharField(unique=True, max_length=50, default='')
+    athletes = models.ForeignKey('Team', related_name='teams', default='', null=True)
     
     class Meta(object):
         verbose_name_plural = "Teams"
@@ -43,4 +43,5 @@ class Team(models.Model):
         
     def __unicode__(self):
         return u'%s | %s'% (self.school, self.sport)
+    
     

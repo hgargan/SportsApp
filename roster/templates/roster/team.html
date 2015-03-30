@@ -3,6 +3,7 @@
 {% block content %}
         <a href="{% url 'roster_team_list'%}"><p class="back-button">Back to Teams</p></a>
         <h1>{{ team.sport }}</h1>
+        <p>Coached by {{ team.coach }}</p>
         <li><a href="{% url 'roster_athlete_list'  %}">Athletes</a></li>
         <li><a href="{% url 'roster_event_list' %}">Events</a></li>
 {% endblock %}

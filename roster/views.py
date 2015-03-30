@@ -10,9 +10,7 @@ def home(request):
     }
     return render(request, 'roster/home.html', context)
 
-def athlete(request, pk):
-    athlete = get_object_or_404(Athlete, id=pk)
-    return render(request, 'roster/athlete.html', {'athlete': athlete})
+
     
 def event(request, pk):
     event = get_object_or_404(Event, id=pk)
@@ -22,6 +20,10 @@ def event(request, pk):
 def athleteList(request):
     athlete_list = Athlete.objects.all()
     return render(request, 'roster/athlete_list.html', {'athletes': athlete_list})
+
+def athlete(request, pk):
+    athlete = get_object_or_404(Athlete, id=pk)
+    return render(request, 'roster/athlete.html', {'athlete': athlete})
 
 def eventList(request):
     event_list = Event.objects.all()

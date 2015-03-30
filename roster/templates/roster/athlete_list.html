@@ -2,7 +2,7 @@
 
 {% block content %}
     <a href="{% url 'roster_team_list' %}"><p class="back-button">Back</p></a>
-    <h2>All Athletes</h2>
+    <h2>All {{ team.sport }} Athletes</h2>
     <table>
         <tr>
             <th><strong>Name</strong></th>
@@ -11,7 +11,7 @@
         </tr>
         {% for athlete in athletes %}
             <tr>
-                <td><a href="{{ athlete.id }}">{{ athlete.lastname }}, {{athlete.firstname}}</a></td>
+                <td><a href="{% url 'roster_athlete' athlete.id %}">{{ athlete.lastname }}, {{ athlete.firstname}}</a></td>
                 <td>{{ athlete.year }}</td>
                 <td>{{ athlete.hometown }}</td>
         {% endfor %}
