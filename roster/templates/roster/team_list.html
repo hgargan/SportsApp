@@ -2,10 +2,11 @@
 
 {% block content %}
     <a href="{% url 'roster_home'%}"><p class="back-button">Back to Home</p></a>
-    <h2>All Teams</h2>
-    <ul>
+    <table>
+        <th>Season</th>
         {% for team in teams %}
-            <li><a href="{% url 'roster_team' team.id %}">{{ team.sport }} | {{ team.season }}</a></li>
+            <tr><td><a href="{% url 'roster_team' team.id %}">{{ team.sport }} | {{ team.season }}</a></td></tr>
         {% endfor %}
-    </ul>
+    </table>
+    
 {% endblock %}
