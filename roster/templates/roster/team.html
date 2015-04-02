@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
+    <head><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script></head>
+    <script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    console.log('DOM Ready');
+     $('#team-home a').click(function() {
+        var url=$(this).attr('href');
+        $('#loaded-content').load(url + ' .container');
+        return false;
+    });
+  });
+    </script>
         <a href="{% url 'roster_team_list'%}"><p class="back-button">Back to Teams</p></a>
-        <h1>{{ team.sport }}</h1>
+        <h1>{{team.season}} {{ team.sport }}</h1>
         <p>Coached by {{ team.coach }}</p>
-        <li><a href="{% url 'roster_athlete_list'  %}">Athletes</a></li>
-        <li><a href="{% url 'roster_event_list' %}">Events</a></li>
+        <div id="team-home"><div class="row">
+            <div class="col-xs-12 col-sm-6 team-links">
+            <a href="{% url 'roster_athlete_list' team.id %}"><h3>Athletes</h3></a>
+            </div>
+            <div class="col-xs-12 col-sm-6 team-links">
+            <a href="{% url 'roster_event_list' %}"><h3>Events</h3></a>
+            </div>
+        </div>
+        </div>
+        <div id="loaded-content"></div>
 {% endblock %}

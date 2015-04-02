@@ -17,9 +17,14 @@ def event(request, pk):
     event_athletes = event.athletes.all()
     return render(request, 'roster/event.html', {'event': event, 'event_athletes': event_athletes})
 
-def athleteList(request):
-    athlete_list = Athlete.objects.all()
-    return render(request, 'roster/athlete_list.html', {'athletes': athlete_list})
+def team(request, pk):
+    team = get_object_or_404(Team, id=pk)
+    return render(request, 'roster/team.html', {'team': team})
+
+def team_athlete_list(request, team_pk):
+    team = get_object_or_404(Team, id=team_pk)
+    team_athletes = team.athletes.all()
+    return render(request, 'roster/athlete_list.html', {'team_athletes': team_athletes})
 
 def athlete(request, pk):
     athlete = get_object_or_404(Athlete, id=pk)
@@ -29,9 +34,6 @@ def eventList(request):
     event_list = Event.objects.all()
     return render(request, 'roster/event_list.html', {'events': event_list})
 
-def team(request, pk):
-    team = get_object_or_404(Team, id=pk)
-    return render(request, 'roster/team.html', {'team': team})
 
 def teamList(request):
     team_list = Team.objects.all()

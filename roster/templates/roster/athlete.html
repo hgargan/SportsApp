@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-    <a href="{% url 'roster_athlete_list' %}"><p class="back-button">Back to Roster</p></a>
+    {% for team in athlete.teams.all %}
+        <a href="{% url 'roster_team' team.id %}"><p class="back-button">Back to Roster</p></a>
+    {% endfor %}
     <div class="athlete-page"><div class="athlete-info"><h1>{{ athlete.firstname }} {{athlete.lastname}}</h1>
     <strong>Year:</strong> {{ athlete.year}}</p>
     <strong>Events:</strong>
@@ -9,8 +11,8 @@
    <li><a href="{% url 'roster_event' event.id %}">{{ event.name }}</a></li>
 {% endfor %}
     <p><strong>Hometown:</strong> {{ athlete.hometown}} | {{ athlete.highschool }}</p></div>
-    <strong>Bio:</strong> <p class="bio">{{ athlete.description | linebreaks }}</p></div>
-    <hr>
+    <strong>Bio:</strong> <p class="bio">{{ athlete.description | linebreaks }}</p><hr></div>
+
 {% endblock content %}
 
 <!-- questions: why is event.id taking me to athlete.id? when i look at the code in the browser, it's

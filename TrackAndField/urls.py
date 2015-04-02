@@ -14,9 +14,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.home, name='roster_home'),
     url(r'^event/$', views.eventList, name='roster_event_list'),
-    url(r'^athlete/$', views.athleteList, name='roster_athlete_list'),
+    url(r'^athlete/(?P<team_pk>\d+)$', views.team_athlete_list, name='roster_athlete_list'),
     url(r'^event/(?P<pk>\d+)$', views.event, name='roster_event'),
-    url(r'^athlete/(?P<pk>\d+)$', views.athlete, name='roster_athlete'),
+    url(r'^team_athlete/(?P<pk>\d+)$', views.athlete, name='roster_athlete'),
     url(r'^team/$', views.teamList, name='roster_team_list'),
     url(r'^team/(?P<pk>\d+)$', views.team, name='roster_team')
 )

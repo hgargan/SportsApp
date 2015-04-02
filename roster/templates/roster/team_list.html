@@ -5,7 +5,7 @@
     <h2>All Teams</h2>
     <ul>
         {% for team in teams %}
-            <li><a href="{{ team.id }}">{{ team.sport }}</a></li>
+            <li><a href="{% url 'roster_team' team.id %}">{{ team.sport }} | {{ team.season }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

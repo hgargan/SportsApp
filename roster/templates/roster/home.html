@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 {% load humanize %}
 {% block content %}
-
-        <h1>UNC Athletics</h1> 
-        <a href="{% url 'roster_team_list'  %}">Teams</a>
+<div class="row">
+        <div class="col-xs-6 col-sm-3 home-menu">
+        <a href="{% url 'roster_team_list'  %}">Rosters</a>
+        </div>
+        <div class="col-xs-6 col-sm-3 home-menu">
+        <a href="#">News</a>
+        </div>
+        <div class="col-xs-6 col-sm-3 home-menu">
+        <a href="#">Scores</a>
+        </div>
+        <div class="col-xs-6 col-sm-3 home-menu">
+        <a href="#">Video</a>
+        </div>
+        <img id= "grouppic" src="../static/grouppic.jpg" width="100%" padding="2% 0 0 2%">
+</div>
 {% endblock %}

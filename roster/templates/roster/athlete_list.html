@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="{% url 'roster_team_list' %}"><p class="back-button">Back</p></a>
+<style>
+</style>
     <h2>All {{ team.sport }} Athletes</h2>
     <table>
         <tr>
@@ -9,11 +10,12 @@
             <th><strong>Class</strong></th>
             <th><strong>Hometown</strong></th>
         </tr>
-        {% for athlete in athletes %}
+        {% for team_athlete in team_athletes %}
             <tr>
-                <td><a href="{% url 'roster_athlete' athlete.id %}">{{ athlete.lastname }}, {{ athlete.firstname}}</a></td>
-                <td>{{ athlete.year }}</td>
-                <td>{{ athlete.hometown }}</td>
+                <td><a href="{% url 'roster_athlete' team_athlete.id %}">{{ team_athlete.lastname }}, {{ team_athlete.firstname}}</a></td>
+                <td>{{ team_athlete.year }}</td>
+                <td>{{ team_athlete.hometown }}</td>
         {% endfor %}
+        
     </table>
 {% endblock %}

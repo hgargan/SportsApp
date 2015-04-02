@@ -31,17 +31,16 @@ class Athlete(models.Model):
         return u'%s, %s' % (self.lastname, self.firstname)
     
 class Team(models.Model):
-    sport = models.CharField(unique=True, max_length=50)
-    school = models.CharField(unique=False, max_length=50)
+    sport = models.CharField(unique=False, max_length=50, null=True)
     season = models.CharField(unique=False, max_length=50, default='')
-    coach = models.CharField(unique=True, max_length=50, default='')
+    coach = models.CharField(unique=False, max_length=50, default='')
     athletes = models.ManyToManyField('Athlete', related_name='teams', default='', null=True)
     
     class Meta(object):
         verbose_name_plural = "Teams"
-        ordering = ('school', 'sport', 'season')
+        ordering = ('sport', 'season')
         
     def __unicode__(self):
-        return u'%s | %s'% (self.school, self.sport)
+        return u'%s | %s'% (self.sport, self.season)
     
     
